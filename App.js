@@ -1,114 +1,205 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+  Dimensions,
 } from 'react-native';
+import { image1, profile, plus, gallery, userInfo } from './assets/images';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const { width, height } = Dimensions.get('window');
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dem: 0,
+      currentTabIndex: 0,
+    };
+  }
+
+  renderGallery = () => {
+    return (
+      <View>
+        <Text>Gallery</Text>
+      </View>
+    );
+  };
+
+  renderUserInfo = () => {
+    return (
+      <View>
+        <Text>User info</Text>
+      </View>
+    );
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <SafeAreaView />
+        <Text
+          style={{
+            fontFamily: 'Roboto-Medium',
+            fontSize: (20 / 375) * width,
+            color: '#262626',
+            textAlign: 'center',
+          }}>
+          andrewmundy
+        </Text>
+
+        <View
+          style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+          <View style={{ marginLeft: 17, marginRight: (46 / 375) * width }}>
+            <Image
+              source={profile}
+              style={{
+                width: (77 / 375) * width,
+                height: (77 / 375) * width,
+              }}
+              resizeMode="contain"
+            />
+            <Image
+              source={plus}
+              style={{
+                width: 20,
+                height: 20,
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+              }}
+              resizeMode="contain"
+            />
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: (174 / 375) * width,
+            }}>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20 }}>
+                1,487
+              </Text>
+              <Text>Posts</Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20 }}>
+                1,487
+              </Text>
+              <Text>Posts</Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20 }}>
+                1,487
+              </Text>
+              <Text>Posts</Text>
+            </View>
+          </View>
+        </View>
+
+        <TouchableOpacity
+          onPress={() => {
+            this.setState({
+              dem: this.state.dem + 1,
+            });
+          }}>
+          <View
+            style={{
+              // width: 342,
+              // height: 30,
+              borderRadius: 5,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderWidth: StyleSheet.hairlineWidth,
+              borderColor: '#dbdbdb',
+              marginHorizontal: 16,
+              marginVertical: 19,
+              paddingVertical: 8,
+            }}>
+            <Text>{`Edit Profile ${this.state.dem}`}</Text>
+          </View>
+        </TouchableOpacity>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            borderTopColor: '#ececec',
+            borderTopWidth: StyleSheet.hairlineWidth,
+          }}>
+          <TouchableOpacity
+            style={[
+              {
+                flex: 1,
+                paddingVertical: 10,
+                alignItems: 'center',
+              },
+              this.state.currentTabIndex === 0
+                ? {
+                  borderBottomColor: '#000',
+                  borderBottomWidth: StyleSheet.hairlineWidth,
+                }
+                : {},
+            ]}
+            onPress={() => {
+              this.setState({
+                currentTabIndex: 0,
+              });
+            }}>
+            <View>
+              <Image
+                source={gallery}
+                style={{
+                  tintColor:
+                    this.state.currentTabIndex === 0 ? '#000' : '#b4b4b4',
+                }}
+              />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              { flex: 1, alignItems: 'center', paddingVertical: 10 },
+              this.state.currentTabIndex === 1
+                ? {
+                  borderBottomColor: '#000',
+                  borderBottomWidth: StyleSheet.hairlineWidth,
+                }
+                : {},
+            ]}
+            onPress={() => {
+              this.setState({
+                currentTabIndex: 1,
+              });
+            }}>
+            <View>
+              <Image
+                source={userInfo}
+                style={{
+                  tintColor:
+                    this.state.currentTabIndex === 1 ? '#000' : '#b4b4b4',
+                }}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        {this.state.currentTabIndex === 0
+          ? this.renderGallery()
+          : this.renderUserInfo()}
+      </View>
+    );
+  }
+}
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
