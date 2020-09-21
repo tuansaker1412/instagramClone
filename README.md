@@ -1,7 +1,7 @@
 # instagramClone
 
-# yarn start
+### yarn start
 
-# yarn android
+### yarn android
 
-# react-native link
+### react-native link
