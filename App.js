@@ -9,7 +9,6 @@ import {
   Dimensions,
 } from 'react-native';
 import { image1, profile, plus, gallery, userInfo } from './assets/images';
-
 const { width, height } = Dimensions.get('window');
 
 class App extends React.Component {
@@ -19,6 +18,21 @@ class App extends React.Component {
       dem: 0,
       currentTabIndex: 0,
     };
+    console.log('================================================');
+    console.log('constructor');
+    console.log('================================================');
+  }
+
+  componentDidMount() {
+    console.log('================================================');
+    console.log('componentDidMount');
+    console.log('================================================');
+  }
+
+  componentDidUpdate() {
+    console.log('================================================');
+    console.log('componentDidUpdate');
+    console.log('================================================');
   }
 
   renderGallery = () => {
@@ -38,6 +52,9 @@ class App extends React.Component {
   };
 
   render() {
+    console.log('================================================');
+    console.log('render');
+    console.log('================================================');
     return (
       <View style={styles.container}>
         <SafeAreaView />
@@ -193,6 +210,12 @@ class App extends React.Component {
           : this.renderUserInfo()}
       </View>
     );
+  }
+
+  componentWillUnmount() {
+    console.log('================================================');
+    console.log('componentDidMount');
+    console.log('================================================');
   }
 }
 
